@@ -51,6 +51,16 @@ while proceedShopping.lower()=="yes":
         proceedShopping=input("Do you wish to add more items (yes/no): ")
 
 else:
+    print("\n\n")
+    print("***Bill Summary***")
+    print("\n")
+    print("Item Quantity Subtotal")
+    total=0
+    for key in shoppingDic:
+        print (f"{key}       {shoppingDic[key]['quantity']}{shoppingDic[key]    ['subtotal']}")
+        total=shoppingDic[key]['subtotal']+total
+        print(f"Total: {total}")
+    print("********Thank You*********")
     print("Hope to see you back soon ! ")
     
     
