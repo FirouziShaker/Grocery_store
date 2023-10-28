@@ -1,4 +1,5 @@
 itemsAvailableDict = {}
+shoppingDic = {}
 #welcome user
 
 userName= input("Please enter your name : ")
@@ -28,17 +29,29 @@ for item in itemsAvailable:
     item_price=item.split()[1]
     print(f"{item_name}: {item_price}")
     
-    itemsAvailableDict.update({item_name: item_price})
+    itemsAvailableDict.update({item_name: float(item_price)})
 print("*" * 20)
 # print(itemsAvailableDict)
 
 #propmt user to add items
 
 proceedShopping=input("Do you wish to proceed (yes/no): ")
-if proceedShopping.lower()=="yes":
-    add_item=input("add item: ")
+while proceedShopping.lower()=="yes":
+    added_item=input("add an item: ")
+    if added_item.title() in itemsAvailableDict:
+        item_qty= int(input("Add quantity: ")) 
+        shoppingDic.update({added_item:{
+            "quantity":item_qty, "subtotal": 
+                itemsAvailableDict[added_item.title()]*item_qty
+        }})
+        
+        print(shoppingDic)
+    else:
+        print("unable to add unavailable item")
+        proceedShopping=input("Do you wish to add more items (yes/no): ")
+
 else:
-    print("We are sorry you dont want to purchase this time. Hope to see you back soon ! ")
+    print("Hope to see you back soon ! ")
     
     
 
